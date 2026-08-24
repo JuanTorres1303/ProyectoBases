@@ -5,14 +5,14 @@ CREATE OR REPLACE PACKAGE UsuarioPkg IS
     PROCEDURE InsertarUsuario(
         p_UserName IN VARCHAR2,
         p_Email IN VARCHAR2,
-        p_Contraseña IN VARCHAR2,
+        p_Contraseï¿½a IN VARCHAR2,
         p_FechaRegistro IN DATE
     );
 
     PROCEDURE ActualizarUsuario(
         p_UserName IN VARCHAR2,
         p_Email IN VARCHAR2,
-        p_Contraseña IN VARCHAR2
+        p_Contraseï¿½a IN VARCHAR2
     );
 
     PROCEDURE InsertarContacto(
@@ -35,25 +35,25 @@ CREATE OR REPLACE PACKAGE BODY UsuarioPkg IS
     PROCEDURE InsertarUsuario(
         p_UserName IN VARCHAR2,
         p_Email IN VARCHAR2,
-        p_Contraseña IN VARCHAR2,
+        p_Contraseï¿½a IN VARCHAR2,
         p_FechaRegistro IN DATE
     ) IS
     BEGIN
-        INSERT INTO Usuarios (UserName, Email, Contraseña, FechaRegistro)
-        VALUES (SEQ_Usuarios.NEXTVAL, p_UserName, p_Email, p_Contraseña, p_FechaRegistro);
+        INSERT INTO Usuarios (UserName, Email, Contraseï¿½a, FechaRegistro)
+        VALUES (SEQ_Usuarios.NEXTVAL, p_UserName, p_Email, p_Contraseï¿½a, p_FechaRegistro);
     END InsertarUsuario;
 
     PROCEDURE ActualizarUsuario(
         p_Id IN VARCHAR2,
         p_UserName IN VARCHAR2,
         p_Email IN VARCHAR2,
-        p_Contraseña IN VARCHAR2
+        p_Contraseï¿½a IN VARCHAR2
     ) IS
     BEGIN
         UPDATE Usuarios
         SET UserName = p_UserName,
             Email = p_Email,
-            Contraseña = p_Contraseña
+            Contraseï¿½a = p_Contraseï¿½a
         WHERE Id = p_Id;
     END ActualizarUsuario;
 
@@ -128,7 +128,7 @@ CREATE OR REPLACE PACKAGE BODY VendedorPkg IS
     ) IS
     BEGIN
         INSERT INTO Vendedor (IdUsuario, DescripcionVendedor, CalificacionVendedor)
-        VALUES (p_IdUsuario, p_Descripcion, NULL); -- La calificación se deriva
+        VALUES (p_IdUsuario, p_Descripcion, NULL); -- La calificaciï¿½n se deriva
     END RegistrarVendedor;
 
     PROCEDURE ActualizarCalificacionVendedor(
@@ -136,14 +136,14 @@ CREATE OR REPLACE PACKAGE BODY VendedorPkg IS
     ) IS
         v_Calificacion FLOAT;
     BEGIN
-        -- Calcular la calificación promedio de un vendedor basado en las reseñas de sus productos
+        -- Calcular la calificaciï¿½n promedio de un vendedor basado en las reseï¿½as de sus productos
         SELECT NVL(AVG(r.CalificacionResena), 0)
         INTO v_Calificacion
         FROM Producto p
         JOIN Resena r ON p.IdProducto = r.IdProducto
         WHERE p.IdUsuario = p_IdUsuario;
 
-        -- Actualizar la calificación del vendedor
+        -- Actualizar la calificaciï¿½n del vendedor
         UPDATE Vendedor
         SET CalificacionVendedor = v_Calificacion
         WHERE IdUsuario = p_IdUsuario;
@@ -203,7 +203,7 @@ CREATE OR REPLACE PACKAGE BODY ProductoPkg IS
     ) IS
     BEGIN
         INSERT INTO Producto (IdProducto, FechaIngreso, Estado, PrecioUnitario, Cantidad, CalificacionProducto, IdUsuario, IdProductoG)
-        VALUES (SEQ_Producto.NEXTVAL, SYSDATE, p_Estado, p_PrecioUnitario, p_Cantidad, NULL, p_IdUsuario, p_IdProductoG); -- La calificación se deriva
+        VALUES (SEQ_Producto.NEXTVAL, SYSDATE, p_Estado, p_PrecioUnitario, p_Cantidad, NULL, p_IdUsuario, p_IdProductoG); -- La calificaciï¿½n se deriva
     END RegistrarProducto;
 
     PROCEDURE ActualizarCalificacionProducto(
@@ -211,13 +211,13 @@ CREATE OR REPLACE PACKAGE BODY ProductoPkg IS
     ) IS
         v_Calificacion FLOAT;
     BEGIN
-        -- Calcular la calificación promedio de un producto basado en sus reseñas
+        -- Calcular la calificaciï¿½n promedio de un producto basado en sus reseï¿½as
         SELECT NVL(AVG(CalificacionResena), 0)
         INTO v_Calificacion
         FROM Resena
         WHERE IdProducto = p_IdProducto;
 
-        -- Actualizar la calificación del producto
+        -- Actualizar la calificaciï¿½n del producto
         UPDATE Producto
         SET CalificacionProducto = v_Calificacion
         WHERE IdProducto = p_IdProducto;
@@ -233,7 +233,7 @@ CREATE OR REPLACE PACKAGE CompradorPkg IS
         p_IdUsuario IN VARCHAR2
     );
 
-    -- Agregar una línea de producto al carrito
+    -- Agregar una lï¿½nea de producto al carrito
     PROCEDURE AgregarLineaProducto(
         p_IdCarrito IN VARCHAR2,
         p_IdProducto IN VARCHAR2,
@@ -251,7 +251,7 @@ CREATE OR REPLACE PACKAGE CompradorPkg IS
         p_NuevoEstado IN VARCHAR2
     );
 
-    -- Actualizar una línea de producto
+    -- Actualizar una lï¿½nea de producto
     PROCEDURE ActualizarLineaProducto(
         p_IdLinea IN VARCHAR2,
         p_CantidadDeseada IN NUMBER
@@ -287,11 +287,11 @@ CREATE OR REPLACE PACKAGE BODY CompradorPkg IS
         FROM Producto
         WHERE IdProducto = p_IdProducto;
 
-        -- Generar un nuevo ID de línea de producto
+        -- Generar un nuevo ID de lï¿½nea de producto
         SELECT LPAD(SEQ_LineaProducto.NEXTVAL, 10, '0') INTO v_IdLinea FROM DUAL;
 
-        -- Insertar la línea de producto
-        INSERT INTO LineaProducto (IdLinea, FechaAñadido, CantidadDeseada, Total, IdCarrito, IdProducto)
+        -- Insertar la lï¿½nea de producto
+        INSERT INTO LineaProducto (IdLinea, FechaAï¿½adido, CantidadDeseada, Total, IdCarrito, IdProducto)
         VALUES (v_IdLinea, SYSDATE, p_Cantidad, p_Cantidad * v_PrecioUnitario, p_IdCarrito, p_IdProducto);
     END AgregarLineaProducto;
 
@@ -467,12 +467,12 @@ CREATE OR REPLACE PACKAGE ProductoGlobalPkg IS
         p_IdCategoria IN VARCHAR2
     );
 
-    -- Consultar productos globales por categoría
+    -- Consultar productos globales por categorï¿½a
     FUNCTION ConsultarProductosPorCategoria(
         p_IdCategoria IN VARCHAR2
     ) RETURN SYS_REFCURSOR;
 
-    -- Consultar categorías
+    -- Consultar categorï¿½as
     FUNCTION ConsultarCategorias RETURN SYS_REFCURSOR;
 
     -- Eliminar un producto global
@@ -498,7 +498,7 @@ CREATE OR REPLACE PACKAGE BODY ProductoGlobalPkg IS
         SELECT LPAD(SEQ_ProductoGlobal.NEXTVAL, 10, '0') INTO v_IdProductoG FROM DUAL;
 
         -- Insertar el producto global
-        INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaño, IdCategoria)
+        INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaï¿½o, IdCategoria)
         VALUES (v_IdProductoG, p_NombreProducto, p_Descripcion, p_Fotografia, p_Tamano, p_IdCategoria);
     END AdicionarProductoGlobal;
 
@@ -517,25 +517,25 @@ CREATE OR REPLACE PACKAGE BODY ProductoGlobalPkg IS
         SET NombreProducto = p_NombreProducto,
             Descripcion = p_Descripcion,
             Fotografia = p_Fotografia,
-            Tamaño = p_Tamano,
+            Tamaï¿½o = p_Tamano,
             IdCategoria = p_IdCategoria
         WHERE IdProductoG = p_IdProductoG;
     END ModificarProductoGlobal;
 
-    -- Consultar productos globales por categoría
+    -- Consultar productos globales por categorï¿½a
     FUNCTION ConsultarProductosPorCategoria(
         p_IdCategoria IN VARCHAR2
     ) RETURN SYS_REFCURSOR IS
         cur SYS_REFCURSOR;
     BEGIN
         OPEN cur FOR
-        SELECT IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaño
+        SELECT IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaï¿½o
         FROM ProductoGlobal
         WHERE IdCategoria = p_IdCategoria;
         RETURN cur;
     END ConsultarProductosPorCategoria;
 
-    -- Consultar todas las categorías
+    -- Consultar todas las categorï¿½as
     FUNCTION ConsultarCategorias RETURN SYS_REFCURSOR IS
         cur SYS_REFCURSOR;
     BEGIN

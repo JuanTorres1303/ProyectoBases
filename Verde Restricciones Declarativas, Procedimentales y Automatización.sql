@@ -573,7 +573,7 @@ VALUES (NULL, 'TC', 'Calle 123 #45-67, Ciudad');
 DROP SEQUENCE SEQ_Vendedor; -- Provoca fallo en el disparador.
 
 INSERT INTO Vendedor (IdUsuario, CalificacionVendedor)
-VALUES (NULL, 5); -- Calificación es válida, pero falla por el ID.
+VALUES (NULL, 5); -- Calificaciï¿½n es vï¿½lida, pero falla por el ID.
 DROP SEQUENCE SEQ_PersonaNatural; -- Provoca fallo en el disparador.
 
 INSERT INTO PersonaNatural (IdUsuario, TipoDocumento, Genero)
@@ -586,7 +586,7 @@ VALUES (NULL, 'Empresa Test', '900123456-7'); -- ID nulo falla.
 DROP SEQUENCE SEQ_CarritoCompra; -- Provoca fallo en el disparador.
 
 INSERT INTO CarritoCompra (IdCarrito, Estado, IdUsuario)
-VALUES (NULL, 'A', 1); -- Estado válido, pero falla por el ID.
+VALUES (NULL, 'A', 1); -- Estado vï¿½lido, pero falla por el ID.
 
 DROP SEQUENCE SEQ_LineaProducto; -- Provoca fallo en el disparador.
 
@@ -611,11 +611,11 @@ VALUES (NULL, SYSDATE, SYSDATE + 90, 1); -- ID nulo falla.
 DROP SEQUENCE SEQ_ProductoGlobal; -- Provoca fallo en el disparador.
 
 INSERT INTO ProductoGlobal (IdProductoG, NombreGlobal, CategoriaGlobal)
-VALUES (NULL, 'Producto Global', 'Electrónica'); -- ID nulo falla.
+VALUES (NULL, 'Producto Global', 'Electrï¿½nica'); -- ID nulo falla.
 DROP SEQUENCE SEQ_Categoria; -- Provoca fallo en el disparador.
 
 INSERT INTO Categoria (IdCategoria, NombreCategoria, Descripcion)
-VALUES (NULL, 'Categoría Prueba', 'Descripción de categoría de prueba.'); -- ID nulo falla.
+VALUES (NULL, 'Categorï¿½a Prueba', 'Descripciï¿½n de categorï¿½a de prueba.'); -- ID nulo falla.
 DROP SEQUENCE SEQ_Pedido; -- Provoca fallo en el disparador.
 
 INSERT INTO Pedido (IdPedido, Direccion, Estado, IdUsuario)

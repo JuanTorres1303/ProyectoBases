@@ -34,40 +34,40 @@ DROP VIEW VistaTotalPago;
 
 
 --INDICES 
--- Crear índice en Contraseña en la tabla Usuarios
-CREATE INDEX IDX_Contraseña_Usuarios
-ON Usuarios (Contraseña);
+-- Crear ï¿½ndice en Contraseï¿½a en la tabla Usuarios
+CREATE INDEX IDX_Contraseï¿½a_Usuarios
+ON Usuarios (Contraseï¿½a);
 
--- Crear índice en Nombre en la tabla PersonaNatural
+-- Crear ï¿½ndice en Nombre en la tabla PersonaNatural
 CREATE INDEX IDX_Nombre_PersonaNatural
 ON PersonaNatural (Nombre);
 
--- Crear índice en NombreEmpresa en la tabla Empresa
+-- Crear ï¿½ndice en NombreEmpresa en la tabla Empresa
 CREATE INDEX IDX_NombreEmpresa_Empresa
 ON Empresa (NombreEmpresa);
 
--- Crear índice en NombreProducto en la tabla ProductoGlobal
+-- Crear ï¿½ndice en NombreProducto en la tabla ProductoGlobal
 CREATE INDEX IDX_NombreProducto_ProductoGlobal
 ON ProductoGlobal (NombreProducto);
 
--- Crear índice en CodigoCupon en la tabla Cupones
+-- Crear ï¿½ndice en CodigoCupon en la tabla Cupones
 CREATE INDEX IDX_CodigoCupon_Cupones
 ON Cupones (CodigoCupon);
 
--- Crear índice en Estado en la tabla Pedido
+-- Crear ï¿½ndice en Estado en la tabla Pedido
 CREATE INDEX IDX_Estado_Pedido
 ON Pedido (Estado);
 
--- Crear índice en Estado en la tabla Pagos
+-- Crear ï¿½ndice en Estado en la tabla Pagos
 CREATE INDEX IDX_Estado_Pagos
 ON Pagos (EstadoPago);
 
--- Crear índice en CalificacionResena en la tabla Reseña
+-- Crear ï¿½ndice en CalificacionResena en la tabla Reseï¿½a
 CREATE INDEX IDX_CalificacionResena_Resena
 ON Resena (CalificacionResena);
 
 ------- Xindices
-DROP INDEX IDX_Contraseña_Usuarios;
+DROP INDEX IDX_Contraseï¿½a_Usuarios;
 DROP INDEX IDX_Nombre_PersonaNatural;
 DROP INDEX IDX_NombreEmpresa_Empresa;
 DROP INDEX IDX_NombreProducto_ProductoGlobal;

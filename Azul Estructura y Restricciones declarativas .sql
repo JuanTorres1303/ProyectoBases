@@ -1,14 +1,14 @@
--- Creación de tablas
+-- Creaciï¿½n de tablas
 -- Tabla Usuarios
 CREATE TABLE Usuarios (
     Id VARCHAR(10) NOT NULL,             
     UserName VARCHAR(50) NOT NULL,       
     Email VARCHAR(100) NOT NULL,         
-    Contraseña VARCHAR(50) NOT NULL,                       
+    Contraseï¿½a VARCHAR(50) NOT NULL,                       
     FechaRegistro DATE NOT NULL         
 );
 
--- Tabla de números de contacto
+-- Tabla de nï¿½meros de contacto
 CREATE TABLE numerosContacto(
     Telofono VARCHAR(10) NOT NULL,
     IdUsuario VARCHAR(10) NOT NULL
@@ -57,7 +57,7 @@ CREATE TABLE CarritoCompra (
 -- Tabla LineaProducto
 CREATE TABLE LineaProducto (
     IdLinea VARCHAR(10) NOT NULL,
-    FechaAñadido DATE NOT NULL,
+    FechaAï¿½adido DATE NOT NULL,
     CantidadDeseada INT NOT NULL,
     Total FLOAT NOT NULL,
     IdCarrito VARCHAR(10) NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE LineaProducto (
     IdProducto VARCHAR(10) NOT NULL
 );
 
--- Tabla Reseña
+-- Tabla Reseï¿½a
 CREATE TABLE Resena (
     IdResena VARCHAR(10) NOT NULL,
     Comentario VARCHAR(200),
@@ -116,7 +116,7 @@ CREATE TABLE ProductoGlobal (
     NombreProducto VARCHAR(100) NOT NULL,
     Descripcion VARCHAR(100) NOT NULL,
     Fotografia VARCHAR(255) NOT NULL,
-    Tamaño VARCHAR(100) NOT NULL,
+    Tamaï¿½o VARCHAR(100) NOT NULL,
     IdCategoria VARCHAR(10) NOT NULL    
 );
 
@@ -174,7 +174,7 @@ ADD CONSTRAINT PK_CarritoCompra PRIMARY KEY (IdCarrito);
 ALTER TABLE LineaProducto
 ADD CONSTRAINT PK_LineaProducto PRIMARY KEY (IdLinea);
 ALTER TABLE Resena
-ADD CONSTRAINT PK_Reseña PRIMARY KEY (IdResena);
+ADD CONSTRAINT PK_Reseï¿½a PRIMARY KEY (IdResena);
 ALTER TABLE Producto
 ADD CONSTRAINT PK_Producto PRIMARY KEY (IdProducto);
 ALTER TABLE Cupones
@@ -318,7 +318,7 @@ ALTER TABLE PersonaNatural DROP CONSTRAINT PK_PersonaNatural;
 ALTER TABLE Empresa DROP CONSTRAINT PK_Empresa;
 ALTER TABLE CarritoCompra DROP CONSTRAINT PK_CarritoCompra;
 ALTER TABLE LineaProducto DROP CONSTRAINT PK_LineaProducto;
-ALTER TABLE Resena DROP CONSTRAINT PK_Reseña;
+ALTER TABLE Resena DROP CONSTRAINT PK_Reseï¿½a;
 ALTER TABLE Producto DROP CONSTRAINT PK_Producto;
 ALTER TABLE Cupones DROP CONSTRAINT PK_Cupones;
 ALTER TABLE Garantia DROP CONSTRAINT PK_Garantia;
@@ -328,11 +328,11 @@ ALTER TABLE Pedido DROP CONSTRAINT PK_Pedido;
 ALTER TABLE Pagos DROP CONSTRAINT PK_Pagos;
 ALTER TABLE Factura DROP CONSTRAINT PK_Factura;
 
--- Eliminar claves únicas
+-- Eliminar claves ï¿½nicas
 ALTER TABLE Usuarios DROP CONSTRAINT UK_Usuarios_UserName;
 ALTER TABLE Usuarios DROP CONSTRAINT UK_Usuarios_Email;
 
--- Eliminar claves foráneas
+-- Eliminar claves forï¿½neas
 ALTER TABLE numerosContacto DROP CONSTRAINT FK__numerosContacto_Usuario;
 ALTER TABLE Comprador DROP CONSTRAINT FK_Comprador_Usuario;
 ALTER TABLE Vendedor DROP CONSTRAINT FK_Vendedor_Usuario;
@@ -371,13 +371,13 @@ DROP TABLE Empresa;
 
 
 ----- poblar ok 
-INSERT INTO Usuarios (Id, UserName, Email, Contraseña, FechaRegistro)
+INSERT INTO Usuarios (Id, UserName, Email, Contraseï¿½a, FechaRegistro)
 VALUES ('U001', 'JuanPerez', 'juanp@gmail.com', 'pass123', TO_DATE('2023-01-01', 'YYYY-MM-DD'));
-INSERT INTO Usuarios (Id, UserName, Email, Contraseña, FechaRegistro)
+INSERT INTO Usuarios (Id, UserName, Email, Contraseï¿½a, FechaRegistro)
 VALUES ('U002', 'MariaLopez', 'marial@gmail.com', 'pass456', TO_DATE('2023-02-15', 'YYYY-MM-DD'));
-INSERT INTO Usuarios (Id, UserName, Email, Contraseña, FechaRegistro)
+INSERT INTO Usuarios (Id, UserName, Email, Contraseï¿½a, FechaRegistro)
 VALUES ('U003', 'CarlosGarcia', 'carlosg@gmail.com', 'pass789', TO_DATE('2023-03-10', 'YYYY-MM-DD'));
-INSERT INTO Usuarios (Id, UserName, Email, Contraseña, FechaRegistro)
+INSERT INTO Usuarios (Id, UserName, Email, Contraseï¿½a, FechaRegistro)
 VALUES ('U004', 'AnaMartinez', 'anam@gmail.com', 'pass321', TO_DATE('2023-04-20', 'YYYY-MM-DD'));
 
 INSERT INTO numerosContacto (Telofono, IdUsuario)
@@ -402,7 +402,7 @@ VALUES ('U004', 'Diagonal 98 #76-54, Ciudad W', 'TD');
 INSERT INTO Vendedor (IdUsuario, DescripcionVendedor, CalificacionVendedor)
 VALUES ('U001', 'Venta de ropa', 4.5);
 INSERT INTO Vendedor (IdUsuario, DescripcionVendedor, CalificacionVendedor)
-VALUES ('U002', 'Venta de electrónicos', 4.8);
+VALUES ('U002', 'Venta de electrï¿½nicos', 4.8);
 INSERT INTO Vendedor (IdUsuario, DescripcionVendedor, CalificacionVendedor)
 VALUES ('U003', 'Venta de libros', 4.3);
 INSERT INTO Vendedor (IdUsuario, DescripcionVendedor, CalificacionVendedor)
@@ -440,23 +440,23 @@ VALUES ('C004', TO_DATE('2023-06-15', 'YYYY-MM-DD'), 'V', 'U004');
 
 
 INSERT INTO Categoria (IdCategoria, NombreCategoria, DescripcionCategoria, FechaCategoria)
-VALUES ('CAT001', 'Electrónicos', 'Dispositivos electrónicos y accesorios.', TO_DATE('2023-05-01', 'YYYY-MM-DD'));
+VALUES ('CAT001', 'Electrï¿½nicos', 'Dispositivos electrï¿½nicos y accesorios.', TO_DATE('2023-05-01', 'YYYY-MM-DD'));
 INSERT INTO Categoria (IdCategoria, NombreCategoria, DescripcionCategoria, FechaCategoria)
 VALUES ('CAT002', 'Muebles', 'Mobiliario para el hogar y oficina.', TO_DATE('2023-05-05', 'YYYY-MM-DD'));
 INSERT INTO Categoria (IdCategoria, NombreCategoria, DescripcionCategoria, FechaCategoria)
-VALUES ('CAT003', 'Libros', 'Libros de diferentes géneros.', TO_DATE('2023-05-10', 'YYYY-MM-DD'));
+VALUES ('CAT003', 'Libros', 'Libros de diferentes gï¿½neros.', TO_DATE('2023-05-10', 'YYYY-MM-DD'));
 INSERT INTO Categoria (IdCategoria, NombreCategoria, DescripcionCategoria, FechaCategoria)
 VALUES ('CAT004', 'Accesorios', 'Accesorios varios.', TO_DATE('2023-05-15', 'YYYY-MM-DD'));
 
 
-INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaño, IdCategoria)
-VALUES ('PG001', 'Laptop X1', 'Laptop de última generación', 'laptop_x1.jpg', '15 pulgadas', 'CAT001');
-INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaño, IdCategoria)
+INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaï¿½o, IdCategoria)
+VALUES ('PG001', 'Laptop X1', 'Laptop de ï¿½ltima generaciï¿½n', 'laptop_x1.jpg', '15 pulgadas', 'CAT001');
+INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaï¿½o, IdCategoria)
 VALUES ('PG002', 'Televisor 4K', 'Televisor 4K UHD Smart', 'tv_4k.jpg', '55 pulgadas', 'CAT002');
-INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaño, IdCategoria)
-VALUES ('PG003', 'Libro Aventura', 'Novela de aventuras', 'libro_aventura.jpg', '300 páginas', 'CAT003');
-INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaño, IdCategoria)
-VALUES ('PG004', 'Silla Gamer', 'Silla ergonómica para gaming', 'silla_gamer.jpg', 'Grande', 'CAT004');
+INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaï¿½o, IdCategoria)
+VALUES ('PG003', 'Libro Aventura', 'Novela de aventuras', 'libro_aventura.jpg', '300 pï¿½ginas', 'CAT003');
+INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaï¿½o, IdCategoria)
+VALUES ('PG004', 'Silla Gamer', 'Silla ergonï¿½mica para gaming', 'silla_gamer.jpg', 'Grande', 'CAT004');
 
 INSERT INTO Producto (IdProducto, FechaIngreso, Estado, PrecioUnitario, Cantidad, CalificacionProducto, IdUsuario, IdProductoG)
 VALUES ('P001', TO_DATE('2023-06-01', 'YYYY-MM-DD'), 'Disponible', 50.00, 100, 4.5, 'U001', 'PG001');
@@ -479,7 +479,7 @@ VALUES ('C004', 'CUPON30', 30, 10, TO_DATE('2023-06-15', 'YYYY-MM-DD'), TO_DATE(
 
 
 INSERT INTO Garantia (IdGarantia, Duracion, Cobertura, Proveedor, FechaInicio, FechaFin, IdProducto)
-VALUES ('G001', 12, 'Cobertura total por fallas de fábrica.', 'ProveedorX', TO_DATE('2023-06-01', 'YYYY-MM-DD'), TO_DATE('2024-06-01', 'YYYY-MM-DD'), 'P001');
+VALUES ('G001', 12, 'Cobertura total por fallas de fï¿½brica.', 'ProveedorX', TO_DATE('2023-06-01', 'YYYY-MM-DD'), TO_DATE('2024-06-01', 'YYYY-MM-DD'), 'P001');
 INSERT INTO Garantia (IdGarantia, Duracion, Cobertura, Proveedor, FechaInicio, FechaFin, IdProducto)
 VALUES ('G002', 24, 'Cobertura parcial para repuestos.', 'ProveedorY', TO_DATE('2023-06-05', 'YYYY-MM-DD'), TO_DATE('2025-06-05', 'YYYY-MM-DD'), 'P002');
 INSERT INTO Garantia (IdGarantia, Duracion, Cobertura, Proveedor, FechaInicio, FechaFin, IdProducto)
@@ -491,9 +491,9 @@ VALUES ('G004', 18, 'Cobertura completa.', 'ProveedorA', TO_DATE('2023-06-15', '
 INSERT INTO Resena (IdResena, Comentario, FechaResena, CalificacionResena, IdUsuario, IdProducto)
 VALUES ('R001', 'Excelente calidad, muy satisfecho.', TO_DATE('2023-07-01', 'YYYY-MM-DD'), 5, 'U001', 'P001');
 INSERT INTO Resena (IdResena, Comentario, FechaResena, CalificacionResena, IdUsuario, IdProducto)
-VALUES ('R002', 'Llegó tarde, pero en buen estado.', TO_DATE('2023-07-05', 'YYYY-MM-DD'), 4, 'U002', 'P002');
+VALUES ('R002', 'Llegï¿½ tarde, pero en buen estado.', TO_DATE('2023-07-05', 'YYYY-MM-DD'), 4, 'U002', 'P002');
 INSERT INTO Resena (IdResena, Comentario, FechaResena, CalificacionResena, IdUsuario, IdProducto)
-VALUES ('R003', 'Regular calidad, esperaba más.', TO_DATE('2023-07-10', 'YYYY-MM-DD'), 3, 'U003', 'P003');
+VALUES ('R003', 'Regular calidad, esperaba mï¿½s.', TO_DATE('2023-07-10', 'YYYY-MM-DD'), 3, 'U003', 'P003');
 INSERT INTO Resena (IdResena, Comentario, FechaResena, CalificacionResena, IdUsuario, IdProducto)
 VALUES ('R004', 'No lo recomiendo.', TO_DATE('2023-07-15', 'YYYY-MM-DD'), 2, 'U004', 'P004');
 
@@ -509,13 +509,13 @@ VALUES ('PD1004', TO_DATE('2023-06-15', 'YYYY-MM-DD'), 'Pa', 'Diagonal 98 #76-54
 
 
 
-INSERT INTO LineaProducto (IdLinea, FechaAñadido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
+INSERT INTO LineaProducto (IdLinea, FechaAï¿½adido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
 VALUES ('LP001', TO_DATE('2023-06-02', 'YYYY-MM-DD'), 2, 100.00, 'C001', 'PD1001', 'P001');
-INSERT INTO LineaProducto (IdLinea, FechaAñadido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
+INSERT INTO LineaProducto (IdLinea, FechaAï¿½adido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
 VALUES ('LP002', TO_DATE('2023-06-06', 'YYYY-MM-DD'), 1, 50.00, 'C002', 'PD1002', 'P002');
-INSERT INTO LineaProducto (IdLinea, FechaAñadido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
+INSERT INTO LineaProducto (IdLinea, FechaAï¿½adido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
 VALUES ('LP003', TO_DATE('2023-06-11', 'YYYY-MM-DD'), 3, 150.00, 'C003', 'PD1003', 'P003');
-INSERT INTO LineaProducto (IdLinea, FechaAñadido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
+INSERT INTO LineaProducto (IdLinea, FechaAï¿½adido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
 VALUES ('LP004', TO_DATE('2023-06-16', 'YYYY-MM-DD'), 5, 250.00, 'C004', 'PD1004', 'P004');
 
 
@@ -539,7 +539,7 @@ INSERT INTO Factura (IdFactura, NumeroFactura, FechaEmision, EstadoFactura, IdPa
 VALUES ('F004', 'FAC004', TO_DATE('2023-06-16', 'YYYY-MM-DD'), 'C', 'PAY004');
 
 ---- Poblarnook 
-INSERT INTO Usuarios (Id, UserName, Email, Contraseña, FechaRegistro)
+INSERT INTO Usuarios (Id, UserName, Email, Contraseï¿½a, FechaRegistro)
 VALUES ('U007', 'JuanPerez', 'juanperez@gmail', '12345', TO_DATE('2023-01-01', 'YYYY-MM-DD'));
 INSERT INTO numerosContacto (Telofono, IdUsuario)
 VALUES ('3501234567', 'U999');
@@ -557,17 +557,17 @@ INSERT INTO Resena (IdResena, Comentario, FechaResena, CalificacionResena, IdUsu
 VALUES ('R008', 'Muy bueno', TO_DATE('2023-07-01', 'YYYY-MM-DD'), 3, NULL, 'P001');
 INSERT INTO Producto (IdProducto, FechaIngreso, Estado, PrecioUnitario, Cantidad, CalificacionProducto, IdUsuario, IdProductoG)
 VALUES ('P005', TO_DATE('2023-07-01', 'YYYY-MM-DD'), 'Descontinuado', 50.00, 100, 4.5, 'U001', 'PG001');
-INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaño, IdCategoria)
-VALUES ('PG005', 'Tablet Z1', 'Tablet de última generación', 'tablet_z1.jpg', '10 pulgadas', 'CAT999');
+INSERT INTO ProductoGlobal (IdProductoG, NombreProducto, Descripcion, Fotografia, Tamaï¿½o, IdCategoria)
+VALUES ('PG005', 'Tablet Z1', 'Tablet de ï¿½ltima generaciï¿½n', 'tablet_z1.jpg', '10 pulgadas', 'CAT999');
 INSERT INTO Categoria (IdCategoria, NombreCategoria, DescripcionCategoria, FechaCategoria)
-VALUES ('CAT999', 'Electrodomésticos', 'Dispositivos para el hogar.', TO_DATE('2023-02-30', 'YYYY-MM-DD'));
+VALUES ('CAT999', 'Electrodomï¿½sticos', 'Dispositivos para el hogar.', TO_DATE('2023-02-30', 'YYYY-MM-DD'));
 INSERT INTO Cupones (IdCupon, CodigoCupon, Descuento, CantidadCupones, FechaInicio, FechaFin, EstadoCupon, IdProducto)
 VALUES ('C011', 'CUPONX', 20, 5, TO_DATE('2023-06-01', 'YYYY-MM-DD'), TO_DATE('2023-07-01', 'YYYY-MM-DD'), 'Activo', 'P999');
 INSERT INTO Garantia (IdGarantia, Duracion, Cobertura, Proveedor, FechaInicio, FechaFin, IdProducto)
 VALUES ('G010', 12, 'Cobertura completa', 'ProveedorX', TO_DATE('2023-06-01', 'YYYY-MM-DD'), TO_DATE('2023-07-01', 'YYYY-MM-DD'), 'P999');
 INSERT INTO Pedido (IdPedido, FechaPedido, Estado, Direccion)
 VALUES ('PD011', '2023-15-12', 'Pe', 'Calle 123 #45-67, Ciudad X');
-INSERT INTO LineaProducto (IdLinea, FechaAñadido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
+INSERT INTO LineaProducto (IdLinea, FechaAï¿½adido, CantidadDeseada, Total, IdCarrito, IdPedido, IdProducto)
 VALUES ('LP010', TO_DATE('2023-07-01', 'YYYY-MM-DD'), 2, 100.00, 'C999', 'PD001', 'P001');
 INSERT INTO Pagos (IdPago, MontoTotal, MetodoPago, FechaPago, EstadoPago, IdPedido)
 VALUES ('PAY005', 200.00, 'TC', TO_DATE('2023-07-01', 'YYYY-MM-DD'), 'Confirmado', 'PD999');
@@ -621,7 +621,7 @@ HAVING
     );
     
     
---Consulltar el producto que mas se vendio en el año
+--Consulltar el producto que mas se vendio en el aï¿½o
 SELECT 
     P.IdProducto,
         SUM(LP.CantidadDeseada) AS CantidadTotalVendida
@@ -649,12 +649,12 @@ HAVING
             JOIN 
                 Pedido PD ON LP.IdPedido = PD.IdPedido
             WHERE 
-                EXTRACT(YEAR FROM PD.FechaPedido) =  2023 --Año seleccionado como ejemplo  este se puede cambiar a su preferencia   
+                EXTRACT(YEAR FROM PD.FechaPedido) =  2023 --Aï¿½o seleccionado como ejemplo  este se puede cambiar a su preferencia   
             GROUP BY 
                 P.IdProducto
         )
     );
--- Consultar los vendedores que venden menos productos en el año
+-- Consultar los vendedores que venden menos productos en el aï¿½o
 SELECT 
     V.IdUsuario AS Vendedor,
     COUNT(LP.IdLinea) AS ProductosVendidos
@@ -704,7 +704,7 @@ SELECT
     EstadoCupon
 FROM 
     Cupones;
----consultar las reseñas
+---consultar las reseï¿½as
 SELECT 
     Comentario, 
     FechaResena, 
@@ -722,12 +722,12 @@ SELECT
     NombreProducto, 
     Descripcion, 
     Fotografia, 
-    Tamaño
+    Tamaï¿½o
 FROM 
     ProductoGlobal;
 ----consultar la linea de producto
 SELECT 
-    FechaAñadido, 
+    FechaAï¿½adido, 
     CantidadDeseada, 
     Total
 FROM 
